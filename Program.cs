@@ -11,12 +11,15 @@ namespace ROC_03_TEST_01
             string lastName = "";//Zadej prijmeni
             Console.WriteLine("Toto je test c. 1 pro {0} {1} - Prace s poli", firstName, lastName);
             //zeptej se uzivatele jak velke pole (Array) nahodnych cisel se ma vygenerovat
-            int lenght = 20; //20 nahrad vysledkem dotazu
+            //Odpoved preved na cislo. Pokud nezada cislo tak Reaguj v consoli Chybovou hlaskou a dale nepokracuj, ukonci program a nebo lepe se ve
+            //smycce znovu dotazuj dokud nezada spravnou hodnotu, t.j. cislo.
+            int lenght = 20; //20 nahrad vysledkem dotazu prevedenym na cislo
             double[] randomArray = CreateArrayOfRandomDoubles(lenght,1,1000);
             Console.Write(ArrayToString(randomArray));
             Console.WriteLine("Prumerna hodnota = {0}",ReturnMeanValue(randomArray));
             (double min, double max) = ReturnMinMax(randomArray);
             Console.WriteLine("Minimalni hodnota = {0}, maximalni hodnota = {1}", min, max);
+            double[,] doubles = CreateMultidimensionalArray(5, 5);
         }
         /// <summary>
         /// Create function that create array of random numbers of a lenght
@@ -56,6 +59,19 @@ namespace ROC_03_TEST_01
             //Projdi ve smycce pole arrayIn, zjisti min a max a vrat je.
            return (min, max);
         }
+        static double[,] CreateMultidimensionalArray(int LenghtX,  int lenghtY) //x jsou radky, y jsou sloupce
+        {
+            double[,] matrix = new double[LenghtX, lenghtY];
+            for (int i = 0; i< LenghtX;i++)
+            {
+                for (int j = 0;j<lenghtY;j++)
+                {
+                    matrix[i, j] = i+j+1; 
+                }
+            }
+            return matrix; 
+            //Co proboha z teto funkce poleze kdo mi rekne?? zkuste zavolat s parametry 5,5 v Main()- muzete pouzit break point a precist values
+        } 
 
 
     }
